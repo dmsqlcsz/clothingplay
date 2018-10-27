@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>옷입히기</title>
+	<style type="text/css">
+		body{ width:1800px; margin:auto; background-image: url(격자핑크배경.png);}
+
+	</style>
+</head>
+<body>
+	<img src="다마고치.gif" class style="left:100px; top: 50px;">
+	<img src="베이스틀.png" class="drag" style="left:200px; top: 200px;">
+	<img src="머리1.png" class="drag" style="right:100px;">
+	<img src="머리1-1.png" class="drag" style="right:200px;">
+	<img src="머리2.png" class="drag" style="right:400px;top: 200px;">
+	<img src="머리2-1.png" class="drag" style="right:500px;top: 200px;">
+	<img src="머리3-1.png" class="drag" style="right:700px;top: 200px;">
+	<img src="머리3.png" class="drag" style="right:800px;top: 200px;">
+
+
+	<img src="옷1.png" class="drag" style="right:800px;top: 500px;">
+	<img src="옷2.png" class="drag" style="right:600px;top: 500px;">
+	<img src="옷3.png" class="drag" style="right:400px;top: 500px;">
+	<img src="옷4.png" class="drag" style="right:100px;top: 500px;">
+
+	<img src="신발1.png" class="drag" style="right:800px;top: 800px;">
+	<img src="신발2.png" class="drag" style="right:600px;top: 800px;">
+	<img src="신발3.png" class="drag" style="right:400px;top: 800px;">
+
+
+
+	<script type="text/javascript">
+	//아래 코드를 삽입하면 drag 클래스가 적용된 객체들은 드래그가 가능합니다.
+	(function(){
+		var d = false;
+		var target,dx,dy;
+		var t = document.getElementsByClassName("drag");
+		for(var i=0; i<t.length; i++){
+			t[i].style.display = "block";
+			t[i].style.position = "absolute";
+			t[i].style.cursor = "pointer";
+			t[i].ondragstart = function(e){e.preventDefault();};
+			t[i].onmousedown = function(e){ d = true; dx = e.offsetX; dy = e.offsetY; target = e.target;}
+			t[i].onmouseup = function(){ d = false;}
+			window.onmousemove = function(e){ 
+				if(d){ target.style.left = (e.clientX - dx) + "px";
+					target.style.top = (e.clientY - dy) + "px";}
+			}
+		}
+	})();
+	</script>
+</body>
+</html>
